@@ -1,0 +1,74 @@
+.custom-button {
+    background-color: #f0a500;
+    border-color: #f0a500; 
+}
+
+.custom-button:disabled {
+    background-color: #ccc; 
+    border-color: #ccc; 
+}
+
+.container {
+    max-width: 800px;
+}
+
+h2 {
+    font-size: 2rem; 
+    color: #333; 
+    transition: color 0.3s ease; 
+}
+
+h2:hover {
+    color: #f0a500; 
+}
+
+.form-label {
+    font-size: 1.2rem; 
+    color: #555; 
+}
+
+.form-control {
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #f0a500; 
+    box-shadow: 0 0 5px rgba(240, 165, 0, 0.5); 
+}
+
+.btn {
+    font-size: 1.2rem; 
+    transition: background-color 0.3s ease; 
+}
+
+.btn:hover {
+    background-color: #e09b00; 
+}
+
+.list-group-item {
+    transition: background-color 0.3s ease; 
+}
+
+.list-group-item:hover {
+    background-color: #f0a500; 
+    color: white; 
+}
+
+@media (max-width: 768px) {
+    h2 {
+        font-size: 1.8rem; 
+    }
+
+    .form-label {
+        font-size: 1rem; 
+    }
+
+    .form-control {
+        font-size: 0.9rem; 
+    }
+
+    .btn {
+        font-size: 1rem; 
+    }
+}

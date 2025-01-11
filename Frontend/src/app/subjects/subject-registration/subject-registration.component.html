@@ -1,0 +1,105 @@
+<div class="container mt-4">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <h2 class="text-center mb-4">Dərs Qeydiyyatı</h2>
+        <form [formGroup]="subjectForm" (ngSubmit)="onSubmit()">
+          <div class="form-group mb-3">
+            <label for="code" class="form-label">Dərsin kodu:</label>
+            <input
+              id="code"
+              class="form-control"
+              formControlName="code"
+              placeholder="Dərsin kodunu daxil edin"
+              required
+            />
+            <div *ngIf="subjectForm.get('code')?.invalid && subjectForm.get('code')?.touched" class="text-danger">
+              Dərsin kodu tələb olunur.
+            </div>
+          </div>
+  
+          <div class="form-group mb-3">
+            <label for="name" class="form-label">Dərsin adı:</label>
+            <input
+              id="name"
+              class="form-control"
+              formControlName="name"
+              placeholder="Dərsin adını daxil edin"
+              required
+            />
+            <div *ngIf="subjectForm.get('name')?.invalid && subjectForm.get('name')?.touched" class="text-danger">
+              Dərsin adı tələb olunur.
+            </div>
+          </div>
+  
+          <div class="form-group mb-3">
+            <label for="grade" class="form-label">Sinifi:</label>
+            <input
+              id="grade"
+              type="number"
+              class="form-control"
+              formControlName="grade"
+              placeholder="Sinifi daxil edin"
+              required
+            />
+            <div *ngIf="subjectForm.get('grade')?.invalid && subjectForm.get('grade')?.touched" class="text-danger">
+              Sinif tələb olunur.
+            </div>
+          </div>
+  
+          <div class="form-group mb-3">
+            <label for="teacherFirstName" class="form-label">Müəllimin adı:</label>
+            <input
+              id="teacherFirstName"
+              class="form-control"
+              formControlName="teacherFirstName"
+              placeholder="Müəllimin adını daxil edin"
+              required
+            />
+            <div *ngIf="subjectForm.get('teacherFirstName')?.invalid && subjectForm.get('teacherFirstName')?.touched" class="text-danger">
+              Müəllimin adı tələb olunur.
+            </div>
+          </div>
+  
+          <div class="form-group mb-3">
+            <label for="teacherLastName" class="form-label">Müəllimin soyadı:</label>
+            <input
+              id="teacherLastName"
+              class="form-control"
+              formControlName="teacherLastName"
+              placeholder="Müəllimin soyadını daxil edin"
+              required
+            />
+            <div *ngIf="subjectForm.get('teacherLastName')?.invalid && subjectForm.get('teacherLastName')?.touched" class="text-danger">
+              Müəllimin soyadı tələb olunur.
+            </div>
+          </div>
+  
+          <button type="submit" class="btn btn-primary custom-button w-100" [disabled]="subjectForm.invalid">Qeydiyyat et</button>
+        </form>
+  
+        <!-- Qeydiyyatdan Keçmiş Dərslər -->
+        <div class="mt-4">
+          <h3 class="text-center">Qeydiyyatdan Keçmiş Dərslər</h3>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Dərsin kodu</th>
+                <th>Dərsin adı</th>
+                <th>Sinifi</th>
+                <th>Müəllim</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let subject of submittedSubjects">
+                <td>{{ subject.code }}</td>
+                <td>{{ subject.name }}</td>
+                <td>{{ subject.grade }}</td>
+                <td>{{ subject.teacherFirstName }} {{ subject.teacherLastName }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  

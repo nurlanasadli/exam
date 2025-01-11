@@ -1,0 +1,89 @@
+<div class="container mt-4">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <h2 class="text-center mb-4">İmtahan Qeydiyyatı</h2>
+        <form [formGroup]="examForm" (ngSubmit)="onSubmit()">
+          <div class="form-group mb-3">
+            <label for="subjectCode" class="form-label">Dərsin kodu:</label>
+            <input
+              id="subjectCode"
+              class="form-control"
+              formControlName="subjectCode"
+              placeholder="Dərsin kodunu daxil edin"
+              required
+            />
+            <div *ngIf="examForm.get('subjectCode')?.invalid && examForm.get('subjectCode')?.touched" class="text-danger">
+              Dərsin kodu tələb olunur və maksimum uzunluğu 3 simvoldur.
+            </div>
+          </div>
+  
+          <div class="form-group mb-3">
+            <label for="studentId" class="form-label">Şagirdin nömrəsi:</label>
+            <input
+              id="studentId"
+              class="form-control"
+              formControlName="studentId"
+              placeholder="Şagirdin nömrəsini daxil edin"
+              required
+            />
+            <div *ngIf="examForm.get('studentId')?.invalid && examForm.get('studentId')?.touched" class="text-danger">
+              Şagirdin nömrəsi tələb olunur və maksimum uzunluğu 5 simvoldur.
+            </div>
+          </div>
+  
+          <div class="form-group mb-3">
+            <label for="examDate" class="form-label">İmtahan tarixi:</label>
+            <input
+              id="examDate"
+              type="date"
+              class="form-control"
+              formControlName="examDate"
+              required
+            />
+            <div *ngIf="examForm.get('examDate')?.invalid && examForm.get('examDate')?.touched" class="text-danger">
+              İmtahan tarixi tələb olunur.
+            </div>
+          </div>
+  
+          <div class="form-group mb-3">
+            <label for="grade" class="form-label">Qiymət:</label>
+            <input
+              id="grade"
+              type="number"
+              class="form-control"
+              formControlName="grade"
+              placeholder="Qiyməti daxil edin"
+              required
+            />
+            <div *ngIf="examForm.get('grade')?.invalid && examForm.get('grade')?.touched" class="text-danger">
+              Qiymət 1 ilə 10 arasında olmalıdır.
+            </div>
+          </div>
+  
+          <button type="submit" class="btn btn-primary custom-button w-100 rounded" [disabled]="examForm.invalid">Qeydiyyat et</button>
+        </form>
+          <div class="mt-4">
+          <h3 class="text-center">Qeydiyyatdan Keçmiş İmtahanlar</h3>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Dərsin Kodu</th>
+                <th>Şagirdin Nömrəsi</th>
+                <th>İmtahan Tarixi</th>
+                <th>Qiymət</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let exam of exams">
+                <td>{{ exam.subjectCode }}</td>
+                <td>{{ exam.studentId }}</td>
+                <td>{{ exam.examDate | date }}</td>
+                <td>{{ exam.grade }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,91 @@
+<div class="container mt-4">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <h2 class="text-center mb-4">Şagird Qeydiyyatı</h2>
+        <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+          <div class="form-group mb-3">
+            <label for="id" class="form-label">Nömrəsi:</label>
+            <input
+              id="id"
+              class="form-control"
+              formControlName="id"
+              placeholder="Şagirdin nömrəsini daxil edin"
+              required
+            />
+            <div *ngIf="studentForm.get('id')?.invalid && studentForm.get('id')?.touched" class="text-danger">
+              Nömrə tələb olunur.
+            </div>
+          </div>
+  
+          <div class="form-group mb-3">
+            <label for="firstName" class="form-label">Adı:</label>
+            <input
+              id="firstName"
+              class="form-control"
+              formControlName="firstName"
+              placeholder="Şagirdin adını daxil edin"
+              required
+            />
+            <div *ngIf="studentForm.get('firstName')?.invalid && studentForm.get('firstName')?.touched" class="text-danger">
+              Ad tələb olunur.
+            </div>
+          </div>
+  
+          <div class="form-group mb-3">
+            <label for="lastName" class="form-label">Soyadı:</label>
+            <input
+              id="lastName"
+              class="form-control"
+              formControlName="lastName"
+              placeholder="Şagirdin soyadını daxil edin"
+              required
+            />
+            <div *ngIf="studentForm.get('lastName')?.invalid && studentForm.get('lastName')?.touched" class="text-danger">
+              Soyad tələb olunur.
+            </div>
+          </div>
+  
+          <div class="form-group mb-3">
+            <label for="grade" class="form-label">Sinifi:</label>
+            <input
+              id="grade"
+              type="number"
+              class="form-control"
+              formControlName="grade"
+              placeholder="Sinifi daxil edin"
+              required
+            />
+            <div *ngIf="studentForm.get('grade')?.invalid && studentForm.get('grade')?.touched" class="text-danger">
+              Sinif tələb olunur.
+            </div>
+          </div>
+  
+          <button type="submit" class="btn btn-primary custom-button w-100" [disabled]="studentForm.invalid">Qeydiyyat et</button>
+        </form>
+  
+        <!-- Qeydiyyatdan Keçmiş Şagirdlər -->
+        <div class="mt-4">
+          <h3 class="text-center">Qeydiyyatdan Keçmiş Şagirdlər</h3>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Nömrə</th>
+                <th>Adı</th>
+                <th>Soyadı</th>
+                <th>Sinifi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let student of submittedStudents">
+                <td>{{ student.id }}</td>
+                <td>{{ student.firstName }}</td>
+                <td>{{ student.lastName }}</td>
+                <td>{{ student.grade }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  
